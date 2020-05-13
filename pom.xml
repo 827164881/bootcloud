@@ -28,6 +28,14 @@
   </properties>
 
   <!-- 子模块继承之后，提供作用:锁定版本 -->
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
   <dependencyManagement>
     <dependencies>
       <!-- springboot 2.2.2 -->
