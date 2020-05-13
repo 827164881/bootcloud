@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -22,14 +23,14 @@ public class PaymentController {
   private PaymentService paymentService;
 
   @PostMapping("payment/create")
-  public HttpResult createPayment(Payment payment){
+  public HttpResult createPayment(@RequestBody Payment payment){
     log.info(payment.toString());
     return paymentService.insert(payment);
   }
 
   @GetMapping("payment/{id}")
   public HttpResult createPayment(@PathVariable Long id){
-    log.info(id+"");
+    log.info(id+"哈哈3");
     return paymentService.get(id);
   }
 
