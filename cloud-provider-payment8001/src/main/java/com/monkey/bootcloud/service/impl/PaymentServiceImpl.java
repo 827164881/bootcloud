@@ -4,6 +4,7 @@ import com.monkey.bootcloud.common.HttpResult;
 import com.monkey.bootcloud.dao.PaymentDao;
 import com.monkey.bootcloud.entity.Payment;
 import com.monkey.bootcloud.service.PaymentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
  * @create: 2020-05-13 10:24
  **/
 @Service
+@Slf4j
 public class PaymentServiceImpl implements PaymentService {
 
   @Autowired
@@ -22,7 +24,7 @@ public class PaymentServiceImpl implements PaymentService {
   public HttpResult insert(Payment payment) {
     int insert = paymentDao.insert(payment);
     if(insert>0){
-      return new HttpResult(200,"成功");
+      return new HttpResult(201,"成功");
     }else {
       return new HttpResult(444,"失败");
     }
@@ -31,6 +33,7 @@ public class PaymentServiceImpl implements PaymentService {
   @Override
   public HttpResult get(Long id) {
     Payment payment = paymentDao.queryById(id);
-    return new HttpResult(payment);
+    log.info("这里用来测试的");
+    return new HttpResult(203,"成功",payment);
   }
 }
