@@ -5,9 +5,9 @@ eureka:
   client:
     service-url:
       #单机的时候这样配置
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-      #defaultZone: http://eureka7002.com:7002/eureka/register-with-eureka: false
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://eureka7002.com:7002/eureka/
     fetch-registry: false
     register-with-eureka: false
   instance:
-    hostname: localhost
+    hostname: eureka7001.com
