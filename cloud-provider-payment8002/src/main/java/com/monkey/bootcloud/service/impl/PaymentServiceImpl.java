@@ -34,6 +34,6 @@ public class PaymentServiceImpl implements PaymentService {
   public HttpResult get(Long id) {
     Payment payment = paymentDao.queryById(id);
     log.info("这里用来测试的");
-    return new HttpResult(200,"成功from"+8001,payment);
+    return new HttpResult(200,"成功from"+8002,payment);
   }
 }
