@@ -30,7 +30,7 @@ public class PaymentController {
 
   @GetMapping("payment/{id}")
   public HttpResult createPayment(@PathVariable Long id){
-    log.info(id+"哈哈3");
+    log.info(id+"哈哈355");
     return paymentService.get(id);
   }
 

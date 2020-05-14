@@ -28,7 +28,7 @@ public class OrderController {
   }
   @GetMapping("/consumer/payment/get/{id}")
   public HttpResult<Payment> getPayment(@PathVariable("id") Integer id) {
-    log.info("ceshi 热部署是否好使2");
+    log.info("ceshi 热部署是否好使222");
     return restTemplate.getForObject(PAYMENY_URL + "payment/"+id, HttpResult.class);
   }
 

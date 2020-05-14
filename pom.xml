@@ -12,6 +12,7 @@
   <modules>
     <module>cloud-provider-payment8001</module>
     <module>cloud-consumer-order80</module>
+    <module>cloud-api-commons</module>
   </modules>
 
   <!--统一管理-->
@@ -28,14 +29,6 @@
   </properties>
 
   <!-- 子模块继承之后，提供作用:锁定版本 -->
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <scope>runtime</scope>
-      <optional>true</optional>
-    </dependency>
-  </dependencies>
   <dependencyManagement>
     <dependencies>
       <!-- springboot 2.2.2 -->
