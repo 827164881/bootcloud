@@ -18,18 +18,19 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @Slf4j
 public class OrderController {
-  public static final String PAYMENY_URL = "http://localhost:8001";
+//  public static final String PAYMENY_URL = "http://localhost:8001";
+  public static final String REMOTE_SERVICE_NAME = "http://CLOUD-PAYMENT-SERVICE/";
   @Autowired
   private RestTemplate restTemplate;
 
   @PostMapping("/consumer/payment/create")
   public HttpResult<Payment> create(Payment payment) {
-    return restTemplate.postForObject(PAYMENY_URL + "payment/create", payment, HttpResult.class);
+    return restTemplate.postForObject(REMOTE_SERVICE_NAME + "payment/create", payment, HttpResult.class);
   }
   @GetMapping("/consumer/payment/get/{id}")
   public HttpResult<Payment> getPayment(@PathVariable("id") Integer id) {
     log.info("ceshi 热部署是否好使222");
-    return restTemplate.getForObject(PAYMENY_URL + "payment/"+id, HttpResult.class);
+    return restTemplate.getForObject(REMOTE_SERVICE_NAME + "payment/"+id, HttpResult.class);
   }
 
 }
