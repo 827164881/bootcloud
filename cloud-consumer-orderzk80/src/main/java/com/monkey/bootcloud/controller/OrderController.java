@@ -1,4 +1,4 @@
-package bootcloud.controller;
+package com.monkey.bootcloud.controller;
 
 import com.monkey.bootcloud.common.HttpResult;
 import com.monkey.bootcloud.entity.Payment;
