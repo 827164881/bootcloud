@@ -19,7 +19,7 @@
     <module>cloud-provider-payment8004</module>
     <module>cloud-consumer-orderzk80</module>
     <module>cloud-consumer-payment-consul8005</module>
-    <!--<module>cloud-consumer-order-consul80</module>-->
+    <module>cloud-consumer-order-consul80</module>
   </modules>
 
   <!--统一管理-->
