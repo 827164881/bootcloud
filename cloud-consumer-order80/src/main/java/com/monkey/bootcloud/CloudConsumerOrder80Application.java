@@ -13,7 +13,7 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
  **/
 @SpringBootApplication
 @EnableDiscoveryClient
-@RibbonClient(name = "CLOUD-PAYMENT-SERVICE",configuration ={MyRibbonRole.class})
+//@RibbonClient(name = "CLOUD-PAYMENT-SERVICE",configuration ={IRibbonRole.class})
 public class CloudConsumerOrder80Application {
 
   public static void main(String[] args) {
