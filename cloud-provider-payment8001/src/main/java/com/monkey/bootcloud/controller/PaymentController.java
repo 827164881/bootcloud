@@ -4,6 +4,8 @@ import cn.hutool.core.thread.ThreadUtil;
 import com.monkey.bootcloud.common.HttpResult;
 import com.monkey.bootcloud.entity.Payment;
 import com.monkey.bootcloud.service.PaymentService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +54,16 @@ public class PaymentController {
   }
 
   @RequestMapping("timeOut")
+  @HystrixCommand(fallbackMethod = "clientTimeOut",commandProperties={
+      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
+  })
   public String timeOut(){
-    ThreadUtil.sleep(5, TimeUnit.SECONDS);
+//    ThreadUtil.sleep(5, TimeUnit.SECONDS);
+    int i = 10 / 0;
     return "thread name："+Thread.currentThread().getName()+"  ,请求超时o(︶︿︶)o 唉";
+  }
+
+  public String clientTimeOut(){
+    return "thread name："+Thread.currentThread().getName()+"  ,8001服务降级了";
   }
 }

@@ -12,6 +12,11 @@
   <artifactId>cloud-provider-payment8001</artifactId>
 
   <dependencies>
+    <!-- hystrix 服务熔断与降级 -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>com.monkey</groupId>
