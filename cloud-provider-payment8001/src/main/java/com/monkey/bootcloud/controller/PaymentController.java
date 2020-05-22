@@ -1,8 +1,10 @@
 package com.monkey.bootcloud.controller;
 
+import cn.hutool.core.thread.ThreadUtil;
 import com.monkey.bootcloud.common.HttpResult;
 import com.monkey.bootcloud.entity.Payment;
 import com.monkey.bootcloud.service.PaymentService;
+import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,4 +46,14 @@ public class PaymentController {
     return serverPort;
   }
 
+  @RequestMapping("success")
+  public String success(){
+    return "thread name："+Thread.currentThread().getName()+"  ,请求成功o(∩_∩)o 哈哈";
+  }
+
+  @RequestMapping("timeOut")
+  public String timeOut(){
+    ThreadUtil.sleep(5, TimeUnit.SECONDS);
+    return "thread name："+Thread.currentThread().getName()+"  ,请求超时o(︶︿︶)o 唉";
+  }
 }
