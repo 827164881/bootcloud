@@ -16,4 +16,10 @@ public interface OrderHelper {
 
   @RequestMapping("/payment/lb")
   public String getPaymentLB();
+
+  @RequestMapping("success")
+  public String success();
+
+  @RequestMapping("timeOut")
+  public String timeOut();
 }

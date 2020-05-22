@@ -1,5 +1,6 @@
 package com.monkey.bootcloud.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,4 +23,18 @@ public class OrderController {
     return helper.getPaymentLB();
   }
 
+  @RequestMapping("/consumer/success")
+  public String success(){
+    return helper.success();
+  }
+
+  @RequestMapping("/consumer/timeOut")
+  @HystrixCommand(fallbackMethod = "timeOutFallBack")
+  public String timeOut(){
+    return helper.timeOut();
+  }
+
+  public String timeOutFallBack(){
+    return "(┬＿┬)请求服务器超时了";
+  }
 }
