@@ -4,6 +4,7 @@ import cn.hutool.core.thread.ThreadUtil;
 import com.monkey.bootcloud.common.HttpResult;
 import com.monkey.bootcloud.entity.Payment;
 import com.monkey.bootcloud.service.PaymentService;
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import java.util.concurrent.TimeUnit;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 @Slf4j
+@DefaultProperties(defaultFallback = "gobolFallBack")
 public class PaymentController {
   @Autowired
   private PaymentService paymentService;
@@ -63,7 +65,18 @@ public class PaymentController {
     return "thread name："+Thread.currentThread().getName()+"  ,请求超时o(︶︿︶)o 唉";
   }
 
+  @RequestMapping("timeOutDefault")
+  @HystrixCommand
+  public String timeOutDefault(){
+//    ThreadUtil.sleep(5, TimeUnit.SECONDS);
+    int i = 10 / 0;
+    return "thread name："+Thread.currentThread().getName()+"  ,请求超时o(︶︿︶)o 唉";
+  }
+
   public String clientTimeOut(){
     return "thread name："+Thread.currentThread().getName()+"  ,8001服务降级了";
+  }
+  public String gobolFallBack(){
+    return "thread name："+Thread.currentThread().getName()+"  ,8001服务globol降级了";
   }
 }
