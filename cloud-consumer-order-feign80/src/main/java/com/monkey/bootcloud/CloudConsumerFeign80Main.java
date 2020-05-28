@@ -13,7 +13,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  **/
 @SpringBootApplication
 @EnableFeignClients
-@EnableCircuitBreaker
+@EnableHystrix
 public class CloudConsumerFeign80Main {
 
   public static void main(String[] args) {

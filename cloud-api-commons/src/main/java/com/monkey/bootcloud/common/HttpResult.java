@@ -11,12 +11,15 @@ import lombok.NoArgsConstructor;
  **/
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class HttpResult<T> {
 
   private Integer code;
   private String msg;
   private T data;
+
+  public HttpResult(){
+    this(200,"成功",null);
+  }
 
   public HttpResult(Integer code,String msg){
     this(code,msg,null);
