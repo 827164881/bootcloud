@@ -14,4 +14,6 @@ public interface PaymentService {
   public HttpResult insert(Payment payment);
 
   HttpResult get(Long id);
+
+    String paymentCircuitBreaker(Integer id);
 }

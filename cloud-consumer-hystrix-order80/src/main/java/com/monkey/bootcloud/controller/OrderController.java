@@ -6,6 +6,7 @@ import com.monkey.bootcloud.hystrix.MicroPaymentService;
 import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +39,10 @@ public class OrderController {
     return paymentService.getPaymentLB();
   }
 
+  @RequestMapping("paymentCircuitBreaker/{id}")
+  public String paymentCircuitBreaker(@PathVariable(value = "id") Integer id) {
+    return paymentService.paymentCircuitBreaker(id);
+  }
 
   public String success() {
     return ":-)";

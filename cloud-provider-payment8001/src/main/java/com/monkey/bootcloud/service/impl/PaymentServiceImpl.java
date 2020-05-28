@@ -1,5 +1,6 @@
 package com.monkey.bootcloud.service.impl;
 
+import cn.hutool.core.util.IdUtil;
 import com.monkey.bootcloud.common.HttpResult;
 import com.monkey.bootcloud.dao.PaymentDao;
 import com.monkey.bootcloud.entity.Payment;
@@ -35,5 +36,15 @@ public class PaymentServiceImpl implements PaymentService {
     Payment payment = paymentDao.queryById(id);
     log.info("这里用来测试的");
     return new HttpResult(200,"成功from"+8001,payment);
+  }
+
+  @Override
+  public String paymentCircuitBreaker(Integer id) {
+    if(id!=null && id<0){
+      return "id不能是负数";
+    }else{
+      String serialNumber = IdUtil.simpleUUID();
+      return Thread.currentThread().getName()+"\t"+"调用成功，流水号："+serialNumber;
+    }
   }
 }

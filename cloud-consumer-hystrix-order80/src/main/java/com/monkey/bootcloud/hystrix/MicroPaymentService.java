@@ -33,4 +33,6 @@ public interface MicroPaymentService {
   @HystrixCommand
   public String timeOutDefault();
 
+  @RequestMapping("paymentCircuitBreaker/{id}")
+  String paymentCircuitBreaker(@PathVariable(value = "id") Integer id);
 }

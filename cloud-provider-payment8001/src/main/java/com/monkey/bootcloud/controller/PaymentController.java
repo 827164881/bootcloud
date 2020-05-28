@@ -65,6 +65,10 @@ public class PaymentController {
     return "thread name："+Thread.currentThread().getName()+"  ,请求超时o(︶︿︶)o 唉";
   }
 
+  @RequestMapping("paymentCircuitBreaker/{id}")
+  String paymentCircuitBreaker(@PathVariable(value = "id") Integer id){
+    return paymentService.paymentCircuitBreaker(id);
+  }
   @RequestMapping("timeOutDefault")
   @HystrixCommand
   public String timeOutDefault(){
@@ -72,6 +76,8 @@ public class PaymentController {
     int i = 10 / 0;
     return "thread name："+Thread.currentThread().getName()+"  ,请求超时o(︶︿︶)o 唉";
   }
+
+
 
   public String clientTimeOut(){
     return "thread name："+Thread.currentThread().getName()+"  ,8001服务降级了";

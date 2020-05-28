@@ -41,4 +41,9 @@ public class PaymentFallbackService implements MicroPaymentService{
   public String timeOutDefault() {
     return "<(‵^′)>";
   }
+
+  @Override
+  public String paymentCircuitBreaker(Integer id) {
+    return "服务器不能处理您的请求，请稍后";
+  }
 }
