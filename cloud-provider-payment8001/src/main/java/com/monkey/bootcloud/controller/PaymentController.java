@@ -39,7 +39,7 @@ public class PaymentController {
     return paymentService.insert(payment);
   }
 
-  @GetMapping("payment/{id}")
+  @GetMapping("payment/get/{id}")
   public HttpResult createPayment(@PathVariable Long id){
     log.info(id+"哈哈355");
     return paymentService.get(id);

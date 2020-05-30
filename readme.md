@@ -15,4 +15,21 @@ maven版本 3.5.4  （3.6.3与低版本idea存在兼容问题）
  ## 项目cloud-provider-payment8004为注册zookeeper的生产端
  - 先在centos下安装jdk环境
  - 在centos下安装zookeeper环境
- - 启动报zookeeper连接超时，可能是jar冲突
+ - 启动报zookeeper连接超时，可能是jar冲突  
+ ## 单个服务用dashboard监控
+ - 配置dashboard后，监控网址为：http://localhost:8001/hystrix.stream
+ - 需要被监控的项目引入注入一个bean
+ ```java
+ @Bean
+    public ServletRegistrationBean getServlet() {
+        HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
+        ServletRegistrationBean registrationBean = new ServletRegistrationBean(streamServlet);
+        registrationBean.setLoadOnStartup(1);
+        registrationBean.addUrlMappings("/hystrix.stream");
+        registrationBean.setName("HystrixMetricsStreamServlet");
+        return registrationBean;
+    }
+```
+
+ 
+ 

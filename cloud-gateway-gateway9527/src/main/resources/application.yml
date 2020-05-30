@@ -1,0 +1,32 @@
+server:
+  port: 9527
+
+
+spring:
+  cloud:
+    gateway:
+      enabled: true
+      routes:
+      - id: payment_routh #\u8DEF\u7531ID\u3002\u6CA1\u6709\u56FA\u5B9A\u89C4\u5219\uFF0C\u4F46\u662F\u8981\u6C42\u552F\u4E00\uFF0C\u5EFA\u8BAE\u914D\u5408\u670D\u52A1\u540D
+        uri: http://localhost:8001
+        # uri: lb://CLOUD-PAYMENT-SERVICE
+        predicates:
+          - Path=/payment/get/**
+      - id: payment_routh2
+        uri: http://localhost:8001
+        #          uri: lb://CLOUD-PAYMENT-SERVICE
+        #https://cloud.spring.io/spring-cloud-static/Hoxton.SR3/reference/htmlsingle/#gateway-request-predicates-factories
+        predicates:
+          - Path=/payment/lb/**
+
+  application:
+    name:  cloud-gateway
+
+eureka:
+  instance:
+    instance-id: cloud-instance-9527
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+    fetch-registry: true
+    register-with-eureka: true
