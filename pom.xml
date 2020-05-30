@@ -22,6 +22,7 @@
     <module>cloud-consumer-order-consul80</module>
     <module>cloud-consumer-order-feign80</module>
     <module>cloud-consumer-hystrix-order80</module>
+      <module>cloud-hystrix-dashboard9001</module>
   </modules>
 
   <!--统一管理-->
