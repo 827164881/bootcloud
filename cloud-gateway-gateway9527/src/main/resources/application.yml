@@ -17,9 +17,13 @@ spring:
         #https://cloud.spring.io/spring-cloud-static/Hoxton.SR3/reference/htmlsingle/#gateway-request-predicates-factories
         predicates:
           - Path=/payment/lb/**
+#          Before Between
           - After=2020-06-01T23:50:13.690+08:00[Asia/Shanghai]
+#          curl http://localhot:9527/payment/lb --cookie "username=monkey"
+          - Cookie=username,monkey
+#          curl http://localhot:9527/payment/lb -H "X-Request-Id:123"
+          - Header=X-Request-Id,\d+
       discovery:
-        locator:
           #动态负载均衡
           enabled: true
 
