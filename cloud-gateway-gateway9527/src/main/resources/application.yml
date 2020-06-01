@@ -17,6 +17,7 @@ spring:
         #https://cloud.spring.io/spring-cloud-static/Hoxton.SR3/reference/htmlsingle/#gateway-request-predicates-factories
         predicates:
           - Path=/payment/lb/**
+          - After=2020-06-01T23:50:13.690+08:00[Asia/Shanghai]
       discovery:
         locator:
           #动态负载均衡
