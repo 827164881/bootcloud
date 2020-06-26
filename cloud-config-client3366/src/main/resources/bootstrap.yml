@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      label: master
+      name: config
+      profile: prod
+      uri: http://localhost:3344
