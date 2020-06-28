@@ -15,8 +15,15 @@ spring:
       server:
         git:
           uri: https://github.com/827164881/bootcloud-config.git
-#      可以指定label，默认就是master
-#      label: master
+  #      可以指定label，默认就是master
+  #      label: master
+  # 增加对rabbitmq的支持
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
 
 eureka:
   client:
@@ -24,3 +31,10 @@ eureka:
       defaultZone: http://eureka7001.com:7001/eureka
     fetch-registry: true
     register-with-eureka: true
+
+# rabbitmq配置，暴露bus刷新配置端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh

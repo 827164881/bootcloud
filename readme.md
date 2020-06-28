@@ -30,6 +30,11 @@ maven版本 3.5.4  （3.6.3与低版本idea存在兼容问题）
         return registrationBean;
     }
 ```
+## bus消息总线刷新
+```$xslt
+curl -X POST "http://localhost:3344/actuator/bus-refresh"
+```
+
 
  
  

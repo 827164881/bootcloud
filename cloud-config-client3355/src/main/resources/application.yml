@@ -11,3 +11,16 @@ eureka:
       defaultZone: http://eureka7001.com:7001/eureka
     fetch-registry: true
     register-with-eureka: true
+
+  # 增加对rabbitmq的支持
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
