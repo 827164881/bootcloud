@@ -42,4 +42,17 @@ curl -X POST "http://localhost:3344/actuator/bus-refresh/{destination}"
 curl -X POST "http://localhost:3344/actuator/bus-refresh/config-client:3355"
 ```
  
- 
+ - 解决mq重复消费，为consumer加分组
+ ```aidl
+spring:
+  application:
+    name: cloud-stream-consumer
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: studyExchange
+          content-type: application/json
+          binder: defaultRabbit
+          group: monkeyG    # 加group可以解决重复消费的问题
+```
