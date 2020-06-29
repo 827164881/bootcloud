@@ -35,6 +35,11 @@ maven版本 3.5.4  （3.6.3与低版本idea存在兼容问题）
 curl -X POST "http://localhost:3344/actuator/bus-refresh"
 ```
 
-
+- 定点通知某一个微服务
+```aidl
+curl -X POST "http://localhost:3344/actuator/bus-refresh/{destination}"
+例如：
+curl -X POST "http://localhost:3344/actuator/bus-refresh/config-client:3355"
+```
  
  
