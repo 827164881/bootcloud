@@ -56,3 +56,5 @@ spring:
           binder: defaultRabbit
           group: monkeyG    # 加group可以解决重复消费的问题
 ```
+- 持久化  
+如果配置了group,就是持久化了，如果没有配置group,微服务宕机时的数据会丢失
